@@ -5,18 +5,17 @@ import { cookies } from 'next/headers'
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const fichaId = searchParams.get('id')
-  const isAdmin = cookies().get('admin_session')?.value === 'true'
+  const cookieStore = await cookies()
+  const isAdmin = cookieStore.get('admin_session')?.value === 'true'
 
   if (fichaId && isAdmin) {
-    // Admin buscando ficha específica
     const adminSb = createAdminSupabase()
     const { data, error } = await adminSb.from('fichas').select('*').eq('id', fichaId).single()
     if (error) return NextResponse.json({ error: error.message }, { status: 404 })
     return NextResponse.json(data)
   }
 
-  // Jogador buscando a própria ficha
-  const supabase = createServerSupabase()
+  const supabase = await createServerSupabase()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
 
@@ -26,7 +25,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  const isAdmin = cookies().get('admin_session')?.value === 'true'
+  const cookieStore = await cookies()
+  const isAdmin = cookieStore.get('admin_session')?.value === 'true'
   const body = await req.json()
   const { id, ...campos } = body
   if (!id) return NextResponse.json({ error: 'ID obrigatório' }, { status: 400 })
@@ -38,8 +38,7 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json(data)
   }
 
-  // Jogador — protege campos fixos se selada
-  const supabase = createServerSupabase()
+  const supabase = await createServerSupabase()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
 
