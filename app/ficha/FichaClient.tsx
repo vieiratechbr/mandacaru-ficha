@@ -79,13 +79,37 @@ export default function FichaClient({ fichaInicial, fichaId, isAdmin }: Props) {
       return
     }
     const el = document.getElementById('ficha-sheet')!
-    window.html2pdf().set({
-      margin: 0,
+
+    // Salva estilos originais
+    const origMaxWidth = el.style.maxWidth
+    const origWidth    = el.style.width
+    const origShadow   = el.style.boxShadow
+
+    // Força largura A4 exata para o html2canvas capturar sem cortar
+    el.style.maxWidth  = '794px'
+    el.style.width     = '794px'
+    el.style.boxShadow = 'none'
+
+    await window.html2pdf().set({
+      margin: [8, 8, 8, 8],
       filename: `Mandacaru_${ficha?.nome ?? 'Sobrevivente'}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#e8d9b8' },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#e8d9b8',
+        windowWidth: 794,
+        scrollX: 0,
+        scrollY: 0,
+      },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
     }).from(el).save()
+
+    // Restaura estilos
+    el.style.maxWidth  = origMaxWidth
+    el.style.width     = origWidth
+    el.style.boxShadow = origShadow
   }
 
   const cs = {

@@ -4,7 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server'
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
 
-  // Rotas públicas: login jogador, registro, admin login, APIs
+  // Rotas sempre públicas
   if (
     path.startsWith('/auth') ||
     path.startsWith('/admin/login') ||
@@ -15,22 +15,20 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Admin: protege /dashboard/admin e /ficha?admin=1
-  if (path.startsWith('/dashboard/admin')) {
-    const adminSession = request.cookies.get('admin_session')?.value
-    if (adminSession !== 'true') {
-      return NextResponse.redirect(new URL('/admin/login', request.url))
-    }
+  // Se tem cookie de admin válido, deixa passar em QUALQUER rota
+  const adminSession = request.cookies.get('admin_session')?.value
+  if (adminSession === 'true') {
     return NextResponse.next()
   }
 
-  // API admin routes
+  // Rotas exclusivas do admin sem sessão admin → manda pro login do admin
+  if (path.startsWith('/dashboard/admin')) {
+    return NextResponse.redirect(new URL('/admin/login', request.url))
+  }
+
+  // APIs admin sem sessão admin → 401
   if (path.startsWith('/api/admin')) {
-    const adminSession = request.cookies.get('admin_session')?.value
-    if (adminSession !== 'true') {
-      return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
-    }
-    return NextResponse.next()
+    return NextResponse.json({ error: 'Não autorizado' }, { status: 401 })
   }
 
   // Jogadores: verifica auth Supabase
