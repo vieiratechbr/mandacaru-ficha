@@ -1,11 +1,3 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'html2pdf.js': false,
-    }
-    return config
-  },
-}
+const nextConfig = {}
 module.exports = nextConfig
