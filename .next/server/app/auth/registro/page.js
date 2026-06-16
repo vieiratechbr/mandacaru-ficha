@@ -1,0 +1,13 @@
+var R=require("../../../chunks/ssr/[turbopack]_runtime.js")("server/app/auth/registro/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0o_kstn._.js")
+R.c("server/chunks/ssr/0aa1_next_dist_esm_build_templates_app-page_1xba-x3.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0jkmwdg._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0mpxeao._.js")
+R.c("server/chunks/ssr/OneDrive_Área de Trabalho_Mandacaru_mandacaru_app_layout_tsx_0um_gy5._.js")
+R.c("server/chunks/ssr/0aa1_next_dist_client_components_12glt22._.js")
+R.c("server/chunks/ssr/0aa1_next_dist_client_components_builtin_forbidden_12t6lyr.js")
+R.c("server/chunks/ssr/0aa1_next_dist_client_components_builtin_unauthorized_1111voh.js")
+R.c("server/chunks/ssr/0aa1_next_dist_client_components_builtin_global-error_0zrf85a.js")
+R.c("server/chunks/ssr/15c9_mandacaru__next-internal_server_app_auth_registro_page_actions_1pmt1rg.js")
+R.m(92172)
+module.exports=R.m(92172).exports

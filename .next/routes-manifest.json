@@ -1,0 +1,135 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/admin/set-role",
+      "regex": "^/api/admin/set\\-role(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/set\\-role(?:/)?$"
+    },
+    {
+      "page": "/api/auth/logout",
+      "regex": "^/api/auth/logout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/logout(?:/)?$"
+    },
+    {
+      "page": "/api/fichas",
+      "regex": "^/api/fichas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/fichas(?:/)?$"
+    },
+    {
+      "page": "/api/mesas",
+      "regex": "^/api/mesas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/mesas(?:/)?$"
+    },
+    {
+      "page": "/api/mesas/entrar",
+      "regex": "^/api/mesas/entrar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/mesas/entrar(?:/)?$"
+    },
+    {
+      "page": "/api/perfil/role",
+      "regex": "^/api/perfil/role(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/perfil/role(?:/)?$"
+    },
+    {
+      "page": "/auth/login",
+      "regex": "^/auth/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/login(?:/)?$"
+    },
+    {
+      "page": "/auth/registro",
+      "regex": "^/auth/registro(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/auth/registro(?:/)?$"
+    },
+    {
+      "page": "/dashboard/admin",
+      "regex": "^/dashboard/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/admin(?:/)?$"
+    },
+    {
+      "page": "/dashboard/mestre",
+      "regex": "^/dashboard/mestre(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/mestre(?:/)?$"
+    },
+    {
+      "page": "/ficha",
+      "regex": "^/ficha(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ficha(?:/)?$"
+    },
+    {
+      "page": "/perfil",
+      "regex": "^/perfil(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/perfil(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

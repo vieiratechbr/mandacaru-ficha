@@ -1,0 +1,3 @@
+module.exports=[59888,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(38919);a.n(d("[project]/OneDrive/Área de Trabalho/Mandacaru/mandacaru/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},50992,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(38919);a.n(d("[project]/OneDrive/Área de Trabalho/Mandacaru/mandacaru/node_modules/next/dist/client/components/builtin/global-error.js"))},52065,a=>{"use strict";a.i(59888);var b=a.i(50992);a.n(b)},52052,a=>{a.n(a.i(52065))}];
+
+//# sourceMappingURL=0aa1_next_dist_client_components_builtin_global-error_0zrf85a.js.map

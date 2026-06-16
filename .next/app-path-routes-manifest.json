@@ -1,0 +1,17 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/admin/set-role/route": "/api/admin/set-role",
+  "/api/auth/logout/route": "/api/auth/logout",
+  "/api/fichas/route": "/api/fichas",
+  "/api/mesas/entrar/route": "/api/mesas/entrar",
+  "/api/mesas/route": "/api/mesas",
+  "/api/perfil/role/route": "/api/perfil/role",
+  "/auth/login/page": "/auth/login",
+  "/auth/registro/page": "/auth/registro",
+  "/dashboard/admin/page": "/dashboard/admin",
+  "/dashboard/mestre/page": "/dashboard/mestre",
+  "/ficha/page": "/ficha",
+  "/page": "/",
+  "/perfil/page": "/perfil"
+}

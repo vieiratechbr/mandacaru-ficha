@@ -1,0 +1,3 @@
+module.exports=[77226,a=>{"use strict";var b=a.i(88497);a.s(["default",0,function({children:a}){return(0,b.jsx)("html",{lang:"pt-BR",children:(0,b.jsx)("body",{style:{margin:0,background:"#1a100a",minHeight:"100vh"},children:a})})},"metadata",0,{title:"MANDACARU — Fichas de RPG",description:"Sistema de fichas para o RPG Mandacaru"}])},37285,a=>{a.n(a.i(77226))}];
+
+//# sourceMappingURL=OneDrive_%C3%81rea%20de%20Trabalho_Mandacaru_mandacaru_app_layout_tsx_0um_gy5._.js.map
