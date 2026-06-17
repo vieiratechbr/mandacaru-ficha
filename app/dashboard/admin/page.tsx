@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { createAdminSupabase } from '@/lib/supabase-server'
+import DeleteFichaBtn from './DeleteFichaBtn'
 
 export default async function DashboardAdmin() {
   const cookieStore = await cookies()
@@ -29,14 +30,15 @@ export default async function DashboardAdmin() {
     table:   { width:'100%', borderCollapse:'collapse', maxWidth:900, marginBottom:'2rem', fontSize:'0.82rem', color:'#e8d9b8' },
     th:      { textAlign:'left' as const, borderBottom:'1px solid #7a3318', padding:'6px 10px',
                color:'#c49a3c', fontSize:'0.65rem', letterSpacing:'0.2em', textTransform:'uppercase' as const },
-    td:      { padding:'7px 10px', borderBottom:'1px solid rgba(122,51,24,0.3)' },
+    td:      { padding:'7px 10px', borderBottom:'1px solid rgba(122,51,24,0.3)', verticalAlign:'middle' as const },
     header:  { display:'flex', justifyContent:'space-between', alignItems:'flex-start', maxWidth:900, marginBottom:'1.5rem' },
     logout:  { color:'#b8a480', fontSize:'0.72rem', background:'none', border:'1px solid #b8a480',
                padding:'6px 14px', cursor:'pointer', fontFamily:'Georgia,serif', letterSpacing:'0.15em' },
     viewBtn: { color:'#c49a3c', fontSize:'0.72rem', textDecoration:'none', letterSpacing:'0.1em' },
+    actions: { display:'flex', gap:'1rem', alignItems:'center' },
   }
 
-  const total = fichas?.length ?? 0
+  const total   = fichas?.length ?? 0
   const seladas = fichas?.filter((f: any) => f.selada).length ?? 0
 
   return (
@@ -47,7 +49,7 @@ export default async function DashboardAdmin() {
           <div style={s.h1}>MANDACARU</div>
           <div style={s.sub}>Painel do Mestre</div>
         </div>
-        <form action="/api/admin/logout" method="POST">
+        <form action="/api/auth/logout" method="POST">
           <button style={s.logout}>Sair</button>
         </form>
       </div>
@@ -67,12 +69,12 @@ export default async function DashboardAdmin() {
           <thead>
             <tr>
               <th style={s.th}>Personagem</th>
-              <th style={s.th}>Jogador (email)</th>
+              <th style={s.th}>Jogador</th>
               <th style={s.th}>Vida</th>
               <th style={s.th}>Medo</th>
               <th style={s.th}>Status</th>
               <th style={s.th}>Atualizada</th>
-              <th style={s.th}></th>
+              <th style={s.th}>Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -93,7 +95,10 @@ export default async function DashboardAdmin() {
                   {new Date(f.atualizada_em).toLocaleDateString('pt-BR')}
                 </td>
                 <td style={s.td}>
-                  <a style={s.viewBtn} href={`/ficha?id=${f.id}&admin=1`}>Ver →</a>
+                  <div style={s.actions}>
+                    <a style={s.viewBtn} href={`/ficha?id=${f.id}&admin=1`}>Ver →</a>
+                    <DeleteFichaBtn fichaId={f.id} nome={f.nome ?? 'sem nome'} />
+                  </div>
                 </td>
               </tr>
             ))}
